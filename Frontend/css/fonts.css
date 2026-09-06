@@ -1,0 +1,329 @@
+/* ==========================================================================
+   FILE: public/css/fonts.css
+   TITLE: Local Fonts Management & Weights Distribution
+   ========================================================================== */
+@font-face {
+    font-family: 'Cairo';
+    src: url('fonts/cairo-v31-arabic_latin-200.woff2') format('woff2');
+    font-weight: 200;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Cairo';
+    src: url('fonts/cairo-v31-arabic_latin-300.woff2') format('woff2');
+    font-weight: 300;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Cairo';
+    src: url('fonts/cairo-v31-arabic_latin-regular.woff2') format('woff2');
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Cairo';
+    src: url('fonts/cairo-v31-arabic_latin-500.woff2') format('woff2');
+    font-weight: 500;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Cairo';
+    src: url('fonts/cairo-v31-arabic_latin-600.woff2') format('woff2');
+    font-weight: 600;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Cairo';
+    src: url('fonts/cairo-v31-arabic_latin-700.woff2') format('woff2');
+    font-weight: 700;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Cairo';
+    src: url('fonts/cairo-v31-arabic_latin-800.woff2') format('woff2');
+    font-weight: 800;
+    font-style: normal;
+    font-display: swap;
+}
+/* المتغير العام */
+:root {
+    --main-font: 'Cairo', sans-serif;
+}
+
+/* 1. القاعدة العامة والصفحة كلها */
+body {
+    font-family: var(--main-font);
+    font-weight: 400;
+}
+
+/* 2. العناوين (تخينة وبارزة) */
+h1, h2, h3, h4, h5, h6 {
+    font-family: var(--main-font);
+    font-weight: 800; 
+}
+
+/* 3. النصوص العادية والعناصر الوصفية */
+p, span, label, li, td, th {
+    font-family: var(--main-font);
+    font-weight: 400;
+}
+
+/* 4. الأزرار وخانات الإدخال والقوائم */
+button, input, select, textarea {
+    font-family: var(--main-font);
+    font-weight: 600;
+}
+
+/* 5. الروابط (عشان تاخد الخط بوزن متوسط مميز) */
+a {
+    font-family: var(--main-font);
+    font-weight: 600;
+}
+
+/* 6. النصوص الصغيرة والملاحظات (رفيعة ومريحة) */
+small, .text-muted, placeholder {
+    font-family: var(--main-font);
+    font-weight: 300;
+}
+/* العناوين الكبيرة الرئيسية (أقصى فخامة ووضوح) */
+h1, h2 {
+    font-family: var(--main-font);
+    font-weight: 800; 
+}
+
+/* العناوين الفرعية (وزن متوسط وثقيل مريح 600) */
+h3, h4, h5, h6 {
+    font-family: var(--main-font);
+    font-weight: 600; 
+}
+/* ==========================================================================
+   تنسيقات الكارد والجداول (Cards & Tables Typography)
+   ========================================================================== */
+
+/* 1. الكارد (Cards) */
+/* عناوين جوه الكارد تاخد وزن ثقيل وبارز */
+.card h1, .card h2, .card h3, .card h4, 
+[class*="card"] h1, [class*="card"] h2, [class*="card"] h3, [class*="card"] h4 {
+    font-family: var(--main-font);
+    font-weight: 800;
+}
+
+/* النصوص العادية جوه الكارد */
+.card p, .card span, .card li,
+[class*="card"] p, [class*="card"] span, [class*="card"] li {
+    font-family: var(--main-font);
+    font-weight: 400;
+}
+
+/* 2. الجداول (Tables) */
+/* رأس الجدول (th) لازم يكون بارز وتخين عشان يشد العين */
+table th, .table th {
+    font-family: var(--main-font);
+    font-weight: 800;
+}
+
+/* بيانات خلايا الجدول (td) تكون واضحة ومريحة للقراءة */
+table td, .table td {
+    font-family: var(--main-font);
+    font-weight: 400;
+}
+
+/* أزرار أو أرقام جوه الجدول (لو فيه أكواد أو أزرار إجراءات) */
+table button, table input, .table button {
+    font-family: var(--main-font);
+    font-weight: 600;
+}
+/* ==========================================================================
+   تنسيقات نظام الرسائل (Toasts) ونوافذ التأكيد (Confirm Modals)
+   ========================================================================== */
+
+/* 1. حاوية الرسائل (Toast Container) */
+#toast-container {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    z-index: 9999;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    pointer-events: none;
+}
+
+/* شكل التوست الفردي */
+.toast {
+    font-family: var(--main-font);
+    font-weight: 600;
+    font-size: 0.875rem;
+    padding: 12px 20px;
+    border-radius: 12px;
+    box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.3);
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    pointer-events: auto;
+    transition: all 0.3s ease;
+    animation: slideInLeft 0.3s ease forwards;
+    color: #fff;
+}
+
+/* ألوان التوست حسب النوع (متوافقة مع الثيم الداكن والفاتح) */
+.toast.info {
+    background: rgba(30, 41, 59, 0.85); /* Slate 800 */
+    border-color: rgba(99, 102, 241, 0.3); /* Indigo tint */
+}
+
+.toast.success {
+    background: rgba(6, 78, 59, 0.85); /* Emerald 900 */
+    border-color: rgba(16, 185, 129, 0.4);
+}
+
+.toast.error {
+    background: rgba(136, 19, 55, 0.85); /* Rose 900 */
+    border-color: rgba(244, 63, 94, 0.4);
+}
+
+/* تأثير ظهور التوست */
+@keyframes slideInLeft {
+    from {
+        opacity: 0;
+        transform: translateX(-30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+
+/* 2. نافذة التأكيد (Confirm Modal) */
+#custom-confirm-modal {
+    position: fixed;
+    inset: 0;
+    z-index: 10000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(15, 23, 42, 0.6); /* خلفية معتمة وشيك */
+    backdrop-filter: blur(8px);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+}
+
+/* تفعيل النافذة عند إضافة كلاس active من الـ JS بتاعك */
+#custom-confirm-modal.active {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+/* صندوق المودال نفسه */
+#custom-confirm-modal .modal-box {
+    font-family: var(--main-font);
+    background: rgba(30, 41, 59, 0.95);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 24px;
+    padding: 24px;
+    width: 100%;
+    max-width: 400px;
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+    transform: scale(0.95);
+    transition: transform 0.3s ease;
+    color: #fff;
+}
+
+#custom-confirm-modal.active .modal-box {
+    transform: scale(1);
+}
+
+/* عناوين ونصوص المودال بأوزان الخطوط الصح */
+#confirm-title {
+    font-family: var(--main-font);
+    font-weight: 800;
+    font-size: 1.25rem;
+    margin-bottom: 8px;
+}
+
+#confirm-msg {
+    font-family: var(--main-font);
+    font-weight: 400;
+    font-size: 0.95rem;
+    color: #cbd5e1; /* Slate 300 */
+    margin-bottom: 20px;
+    line-height: 1.5;
+}
+
+/* أزرار المودال */
+#custom-confirm-modal .modal-actions {
+    display: flex;
+    gap: 10px;
+    justify-content: flex-end;
+}
+
+#confirm-ok-btn, #confirm-cancel-btn {
+    font-family: var(--main-font);
+    font-weight: 600;
+    padding: 10px 20px;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    border: none;
+    font-size: 0.875rem;
+}
+
+#confirm-ok-btn {
+    background: linear-gradient(135deg, #4f46e5, #7c3aed);
+    color: #fff;
+}
+
+#confirm-ok-btn:hover {
+    opacity: 0.9;
+    transform: translateY(-1px);
+}
+
+#confirm-cancel-btn {
+    background: rgba(255, 255, 255, 0.08);
+    color: #e2e8f0;
+}
+
+#confirm-cancel-btn:hover {
+    background: rgba(255, 255, 255, 15);
+}
+/* ==========================================================================
+   تنسيقات لوحة وعناصر الإشعارات (Notifications Center Typography)
+   ========================================================================== */
+
+/* عنوان رئيس لوحة الإشعارات */
+.notif-header-title {
+    font-family: var(--main-font);
+    font-weight: 800; /* أقصى فخامة للعنوان */
+}
+
+/* عنوان الإشعار الفردي */
+.notif-title {
+    font-family: var(--main-font);
+    font-weight: 600; /* بارز وواضح */
+}
+
+/* نص تفاصيل الإشعار */
+.notif-message {
+    font-family: var(--main-font);
+    font-weight: 400; /* مريح للقراءة */
+    line-height: 1.4;
+}
+
+/* وقت الإشعار (صغير ورفيع) */
+.notif-time {
+    font-family: var(--main-font);
+    font-weight: 300; /* خفيف عشان مياخدش الانتباه الأول */
+}

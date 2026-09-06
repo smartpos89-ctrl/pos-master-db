@@ -1,0 +1,279 @@
+/* إجبار نافذة التأكيد تكون مخفية تماماً عند فتح الصفحة وتظهر فقط عند تفعيلها */
+#custom-confirm-modal {
+    display: none !important;
+}
+
+#custom-confirm-modal.active {
+    display: flex !important;
+}
+/* قفل السكرول الخارجي تماماً وثبيت الشاشة */
+html, body {
+    background-color: #020617 !important;
+    color: #f8fafc;
+    margin: 0;
+    padding: 0;
+    height: 100% !important;
+    overflow: hidden !important; /* دي اللي بتمنع سكرول الصفحة الكلية */
+}
+/* ========================================== */
+/* 🎨 تنسيقات السبلاش الفخمة (Pro Splash CSS) */
+/* ========================================== */
+.pro-splash-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: radial-gradient(circle at center, #1e293b 0%, #0f172a 100%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 99999;
+    transition: opacity 0.5s ease, visibility 0.5s ease;
+}
+
+.pro-splash-container.hidden {
+    opacity: 0;
+    visibility: hidden;
+}
+
+.pro-splash-card {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 2rem;
+}
+
+/* حاوية الأيقونة مع التوهج */
+.pro-logo-wrapper {
+    position: relative;
+    width: 110px;
+    height: 110px;
+    margin-bottom: 1.5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.pro-splash-logo {
+    width: 100px;
+    height: 100px;
+    object-fit: contain;
+    border-radius: 24px;
+    position: relative;
+    z-index: 2;
+    animation: proPulse 2s infinite ease-in-out;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+}
+
+/* تأثير التوهج الخلفي للأيقونة */
+.pro-logo-glow {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, #3b82f6, #8b5cf6);
+    filter: blur(20px);
+    opacity: 0.6;
+    border-radius: 50%;
+    z-index: 1;
+    animation: proGlowPulse 2s infinite ease-in-out;
+}
+
+/* النصوص */
+.pro-splash-title {
+    color: #ffffff;
+    font-size: 1.8rem;
+    font-weight: 700;
+    margin: 0 0 0.5rem 0;
+    letter-spacing: 0.5px;
+}
+
+.pro-splash-subtitle {
+    color: #94a3b8;
+    font-size: 0.95rem;
+    margin: 0 0 2rem 0;
+    font-weight: 400;
+}
+
+/* لودر النقاط الحديثة */
+/* ========================================== */
+/* 🧊 لودر المكعبات الحديث (Modern Cubes Loader) */
+/* ========================================== */
+.pro-modern-loader {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    align-items: center;
+}
+
+.pro-modern-loader span {
+    width: 14px;
+    height: 14px;
+    background-color: #3b82f6;
+    border-radius: 3px; /* بيدي زوايا دائرية خفيفة للمكعب عشان يبدو شيك */
+    animation: cubeBounce 1.2s infinite ease-in-out both;
+    box-shadow: 0 4px 10px rgba(59, 130, 246, 0.4);
+}
+
+.pro-modern-loader span:nth-child(1) { animation-delay: -0.4s; }
+.pro-modern-loader span:nth-child(2) { animation-delay: -0.2s; }
+.pro-modern-loader span:nth-child(3) { animation-delay: 0s; }
+
+@keyframes cubeBounce {
+    0%, 80%, 100% { 
+        transform: scale(0); 
+        opacity: 0.3;
+    } 
+    40% { 
+        transform: scale(1.0); 
+        opacity: 1;
+    }
+}
+/* الحركات (Keyframes) */
+@keyframes proPulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.06); }
+}
+
+@keyframes proGlowPulse {
+    0%, 100% { opacity: 0.4; transform: scale(0.95); }
+    50% { opacity: 0.8; transform: scale(1.15); }
+}
+
+@keyframes proBounce {
+    0%, 80%, 100% { transform: scale(0); }
+    40% { transform: scale(1.0); }
+}
+
+/* الحاوية الرئيسية تملى الشاشة وفوق الكل */
+.pro-splash-fullscreen-wrapper {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 99999; /* أعلى من أي عنصر تاني */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    background-color: #0f172a; /* لون خلفي احتياطي لو الفيديو لسه ما حملش */
+}
+
+/* تنسيق الفيديو عشان يملى الشاشة */
+.pro-splash-bg-video {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    min-width: 100%;
+    min-height: 100%;
+    width: auto;
+    height: auto;
+    z-index: -1; /* تحت كل الطبقات */
+    transform: translateX(-50%) translateY(-50%);
+    object-fit: cover; /* بيخلي الفيديو يعمل Fill للشاشة من غير ما يمط */
+}
+
+/* طبقة تعتيم خفيفة فوق الفيديو عشان يظهر الكلام بوضوح */
+.pro-video-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6); /* درجة تعتيم 60% */
+    z-index: 0; /* فوق الفيديو وتحت بطاقة المحتوى */
+}
+
+/* تنسيق بطاقة المحتوى (اللوجو والكلام) العائمة في النص */
+.pro-splash-card-floating {
+    position: relative; /* عشان الـ z-index يشتغل */
+    z-index: 1; /* فوق الفيديو والـ Overlay */
+    text-align: center;
+    padding: 2rem;
+    /* لو عايز خلفية للبطاقة نفسها ممكن تضيفها هنا */
+    /* background: rgba(255, 255, 255, 0.05); backdrop-filter: blur(10px); border-radius: 20px; */
+}
+
+/* تنسيق اللوجو الجديد (ثابت كـ صورة أو SVG، مش فيديو) */
+.pro-logo-wrapper-static {
+    position: relative;
+    margin-bottom: 1.5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.pro-splash-logo-img {
+    max-width: 120px; /* كبرنا حجم اللوجو شوية عشان السبلاش سكرين */
+    height: auto;
+    filter: drop-shadow(0 4px 6px rgba(0,0,0,0.3));
+}
+
+/* ==========================================================================
+   تنسيقات شاشة تسجيل الدخول مع أنيميشن التموين (Gradient Wave Animation)
+   ========================================================================== */
+/* ========================================== */
+/* 🌟 إضاءات الخلفية المتحركة (Pulse Glow) */
+/* ========================================== */
+@keyframes pulseGlow {
+    0%, 100% {
+        transform: scale(1) translate(0, 0);
+        opacity: 0.4;
+    }
+    50% {
+        transform: scale(1.25) translate(-10px, 10px);
+        opacity: 0.8;
+    }
+}
+
+/* ربط الحركة بدوائر الإضاءة الخلفية */
+.glow-1 {
+    animation: pulseGlow 6s infinite ease-in-out;
+}
+
+.glow-2 {
+    animation: pulseGlow 8s infinite ease-in-out 3s;
+}
+
+/* ========================================== */
+/* 🔄 تأثير التبديل السلس بين الواجهات */
+/* ========================================== */
+.view-transition {
+    transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
+}
+
+@keyframes moveBackgroundVertical {
+    0% { 
+        transform: translateY(-250px) scale(1.1); 
+    }
+    50% { 
+        transform: translateY(320px) scale(1.15); 
+    }
+    100% { 
+        transform: translateY(-250px) scale(1.1); 
+    }
+}
+
+.animate-bg-scroll {
+    /* ظبطنا الوقت على 6 ثواني عشان تبان واضحة وطويلة، وراسية بالكامل */
+    animation: moveBackgroundVertical 6s ease-in-out infinite;
+}
+
+
+.badge-animated {
+    animation: badgeFloatDown 0.7s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* حركة نبض خفيفة وهادئة للبادج لو حابب */
+@keyframes softPulse {
+    0%, 100% { box-shadow: 0 10px 25px -5px rgba(99, 102, 241, 0.15); }
+    50% { box-shadow: 0 15px 30px -5px rgba(99, 102, 241, 0.3); }
+}
+
+.badge-pulse {
+    animation: softPulse 3s ease-in-out infinite;
+}
+
+
